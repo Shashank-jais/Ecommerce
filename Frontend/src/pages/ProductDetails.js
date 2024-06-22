@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import summaryApi from '../common'
 import { FaStar } from "react-icons/fa";
@@ -6,6 +6,8 @@ import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from '../Helpers/displayCurrency';
 import VerticalCardProduct from '../components/VerticalCardProduct';
 import RecommendProduct from '../components/RecommendProduct';
+import Context from '../context';
+import addToCart from '../Helpers/addToCart';
 
 const ProductDetails = () => {
   const [data, setdata] = useState({
@@ -28,6 +30,16 @@ const ProductDetails = () => {
   })
   const [zoomImage, setZoomImage] = useState(false)
 
+
+
+  const { fetchuserdetails, fetchUserAddCart } = useContext(Context)
+
+
+
+    const handleAddtocart= async(e,id)=>{
+        await addToCart(e, id)
+        await fetchUserAddCart()
+    }
 
 
   const fetchProductDetails = async () => {
@@ -180,8 +192,8 @@ const ProductDetails = () => {
               </div>
 
               <div className='flex items-center gap-3 my-2 '>
-                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white'>Buy</button>
-                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-white font-medium bg-red-600 hover:bg-white hover:text-red-600'>Add To Cart</button>
+                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e)=>handleAddtocart(e,data?._id)}>Buy</button>
+                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-white font-medium bg-red-600 hover:bg-white hover:text-red-600' onClick={(e)=>handleAddtocart(e,data?._id)}>Add To Cart</button>
               </div>
 
               <div>

@@ -4,6 +4,7 @@ import displayINRCurrency from '../Helpers/displayCurrency';
 import { Link } from 'react-router-dom';
 import addToCart from '../Helpers/addToCart';
 import Context from '../context';
+import scrollTop from '../Helpers/scrollTop';
 
 const RecommendProduct = ({ category, heading }) => {
     const [data, setdata] = useState([]);
@@ -55,7 +56,7 @@ const RecommendProduct = ({ category, heading }) => {
                         ))
                     ) : (
                         data.map((product) => (
-                            <Link to = {"/product/" + product?._id} className='w-full min-w-[280px] md:min-w-[250px] max-w-[280px] md:max-w-[250px] bg-white rounded-sm shadow '>
+                            <Link to = {"/product/" + product?._id} className='w-full min-w-[280px] md:min-w-[250px] max-w-[280px] md:max-w-[250px] bg-white rounded-sm shadow '  onClick={scrollTop}>
                                 <div className='bg-slate-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex items-center justify-center'>
                                     <img src={product.productImage[0]} alt={product?.productName} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply' />
                                 </div>

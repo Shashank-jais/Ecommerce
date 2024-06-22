@@ -3,7 +3,7 @@ import Logo from './logo'
 import { IoSearch } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiMiniShoppingCart } from "react-icons/hi2";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
@@ -18,6 +18,10 @@ const Headr = () => {
   const [menuDisplay, setmenuDisplay] = useState(false)
   const context = useContext(Context)
   const navigate = useNavigate()
+  const searchInput = useLocation()
+  const [search ,setSearch] = useState(searchInput?.search?.split("=")[1])
+
+
 
   // console.log('user', user);
   const handlelogout = async () => {
@@ -40,6 +44,7 @@ const Headr = () => {
 
   const handleSearch = async (e) => {
     const { value } = e.target 
+    setSearch(value)
     if(value){
       navigate(`/search?q=${value}`)  
     }
@@ -58,7 +63,7 @@ const Headr = () => {
             </Link>
           </div>
           <div className="hidden lg:flex items-center w-full justify-between  max-w-sm border rounded-full focus-within:shadow">
-            <input type='text' className='w-full pl-2 outline-none' placeholder='search product here ...'  onChange={handleSearch}/>
+            <input type='text' className='w-full pl-2 outline-none' placeholder='search product here ...'  onChange={handleSearch} value={search}/>
             <div className='text-lg min-w-[50px] h-8 bg-red-500 flex items-center justify-center rounded-r-full text-white' ><IoSearch /></div>
           </div>
           <div className="flex item-center justify-center gap-3 lg:gap-7 ">

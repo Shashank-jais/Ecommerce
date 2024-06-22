@@ -15,7 +15,7 @@ const SearchProductCard = ({loading,data=[]}) => {
     }
 
     return (
-        <div className='grid grid-cols-[repeat(auto-fit,minmax(260px,300px))] justify-evenly md:gap-2 overflow-x-auto scrollbar-none transition-all '>
+        <div className='grid grid-cols-[repeat(auto-fit,minmax(260px,300px))] justify-center md:justify-evenly gap-4 overflow-x-auto scrollbar-none transition-all '>
             {
                 loading ? (
                     loadingList.map((_, index) => (

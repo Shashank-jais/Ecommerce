@@ -31,9 +31,9 @@ const SearchProduct = () => {
           <p className='text-lg text-center'>Loading...</p>
         )
       }
-      <p>Search Result: {data.length}</p>
+      <p className='text-lg font-semibold  my-3'>Search Result: {data.length}</p>
       {
-        data.length == 0 && !loading && (
+        data.length === 0 && !loading && (
           <p className='bg-white text-lg text-center p-4'>No Data Found</p>
         )
       }
