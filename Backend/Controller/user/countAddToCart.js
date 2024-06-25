@@ -3,6 +3,9 @@ const addtocartmodel = require("../../models/cartProduct")
 const countAddToCart =async(req,res)=>{
     try{
         const userId = req.userId
+        if (!userId) {
+            throw new Error("User ID is undefined");
+        }
         const count = await addtocartmodel.countDocuments({userId:userId})
         res.json({
             data:{
