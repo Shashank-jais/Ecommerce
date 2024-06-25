@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import summaryApi from '../common'
 import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
@@ -29,6 +29,8 @@ const ProductDetails = () => {
     y: 0
   })
   const [zoomImage, setZoomImage] = useState(false)
+  const navigate = useNavigate()
+
 
 
 
@@ -86,6 +88,13 @@ const ProductDetails = () => {
   }
   console.log(data.category)
 
+  const handleBuyProduct = async(e,id)=>{
+    await addToCart(e,id)
+    fetchUserAddCart()
+    navigate("/cart")
+
+  }
+
   return (
     <div className='container mx-auto p-8 min-h-[87vh] md:min-h-[84vh]'>
       <div className='min-h-[200px] flex flex-col lg:flex-row gap-4'>
@@ -121,9 +130,9 @@ const ProductDetails = () => {
               loading ? (
                 <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
                   {
-                    productimg.map(el => {
+                    productimg.map((el,index) => {
                       return (
-                        <div className='h-20 w-20 bg-slate-200 rounded animate-pulse' key={'loading'}></div>
+                        <div className='h-20 w-20 bg-slate-200 rounded animate-pulse ' key={'loading'+index}></div>
                       )
                     })
                   }
@@ -149,7 +158,7 @@ const ProductDetails = () => {
         {/* Product Detail Section */}
         {
           loading ? (
-            <div className='grid gap-1 w-full'>
+            <div className='grid gap-1 w-full' >
               <p className='bg-slate-200  animate-pulse h-10 w-full  inline-block '></p>
               <h2 className='text-2xl lg:text-3xl font-medium h-6 bg-slate-200 animate-pulse '></h2>
               <p className='capitalize text-slate-500 bg-slate-200 max-w-[100px] animate-pulse h-6'></p>
@@ -192,7 +201,7 @@ const ProductDetails = () => {
               </div>
 
               <div className='flex items-center gap-3 my-2 '>
-                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e)=>handleAddtocart(e,data?._id)}>Buy</button>
+                <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-red-600 font-medium hover:bg-red-600 hover:text-white' onClick={(e)=>handleBuyProduct(e,data?._id)}>Buy</button>
                 <button className='border-2 border-red-600 rounded px-3 py-1 min-w-[120px] text-white font-medium bg-red-600 hover:bg-white hover:text-red-600' onClick={(e)=>handleAddtocart(e,data?._id)}>Add To Cart</button>
               </div>
 

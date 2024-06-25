@@ -74,6 +74,10 @@ const summaryApi = {
     SearchProduct:{
         url:`${backendDomain}/api/search`,
         method:"get"
+    },
+    filterProduct : {
+        url:`${backendDomain}/api/filter`,
+        method:"post"
     }
     
 }

@@ -3,7 +3,7 @@ import Logo from './logo'
 import { IoSearch } from "react-icons/io5";
 import { FaRegUserCircle } from "react-icons/fa";
 import { HiMiniShoppingCart } from "react-icons/hi2";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import summaryApi from '../common';
 import { toast } from 'react-toastify';
@@ -19,7 +19,9 @@ const Headr = () => {
   const context = useContext(Context)
   const navigate = useNavigate()
   const searchInput = useLocation()
-  const [search ,setSearch] = useState(searchInput?.search?.split("=")[1])
+  const URLSearch = new URLSearchParams(searchInput?.search)
+  const searchQuery = URLSearch.getAll("q")
+  const [search ,setSearch] = useState(searchQuery)
 
 
 
@@ -33,6 +35,7 @@ const Headr = () => {
     if (data.success) {
       toast.success(data.message);
       dispatch(setUserDetails(null));
+      navigate("/")
     }
     if (data.error) {
       toast.error(data.message);

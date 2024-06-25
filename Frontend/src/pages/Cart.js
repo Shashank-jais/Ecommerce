@@ -20,14 +20,14 @@ const Cart = () => {
 
 
   const fetchdata = async () => {
-    setloading(true)
+    // setloading(true)
     const response = await fetch(summaryApi.addtocartview.url, {
       method: summaryApi.addtocartview.method,
       credentials: "include",
       headers: { 'content-type': 'application/json' },
 
     })
-    setloading(false)
+    // setloading(false)
     const responsedata = await response.json()
     if (responsedata.success) {
       setdata(responsedata.data)
@@ -36,9 +36,17 @@ const Cart = () => {
 
   }
 
+  const handleLoading = async () => {
+    await fetchdata()
+  }
+
   useEffect(() => {
-    fetchdata()
+    setloading(true)
+    handleLoading()
+    setloading(false)
   }, [])
+
+
 
   const increaseQty = async (id, qty) => {
     const response = await fetch(summaryApi.updateCartProduct.url, {
@@ -136,9 +144,9 @@ const Cart = () => {
         <div className='w-full max-w-3xl  '>
           {
             loading ? (
-              loadingCart.map(el => {
+              loadingCart.map((el, index) => {
                 return (
-                  <div key={el + "Add To Cart"} className='hidden w-full bg-slate-200 h-32 my-2 border-slate-300 animate-pulse rounded'>
+                  <div key={el + "Add To Cart" + index} className='hidden w-full bg-slate-200 h-32 my-2 border-slate-300 animate-pulse rounded'>
 
                   </div>
 
@@ -181,7 +189,7 @@ const Cart = () => {
         <div className='mt-5 lg:mt-0 w-full max-w-md'>
           {loading ? (
             <div className='h-36 bg-slate-200 border border-slate-200 animate-pulse'>
-              
+
             </div>
           ) :
             (
