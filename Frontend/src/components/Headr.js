@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { setUserDetails } from '../store/userslice';
 import ROLE from '../common/role';
 import Context from '../context';
+import image from '../assest/new_logo.jpeg'
 
 
 const Headr = () => {
@@ -58,16 +59,17 @@ const Headr = () => {
 
   return (
     <div>
-      <header className='h-16 shadow-md bg-white fixed w-full z-40'>
+      <header className='h-16 shadow-md header-bg fixed w-full z-40'>
         <div className="p-5 h-full container mx-auto flex items-center justify-between">
           <div className="">
             <Link to={'/'}>
-              <Logo w={100} h={50} />
+              {/* <Logo w={100} h={50} /> */}
+              <img src={image} width={140}  />
             </Link>
           </div>
           <div className="hidden lg:flex items-center w-full justify-between  max-w-sm border rounded-full focus-within:shadow">
-            <input type='text' className='w-full pl-2 outline-none' placeholder='search product here ...'  onChange={handleSearch} value={search}/>
-            <div className='text-lg min-w-[50px] h-8 bg-red-500 flex items-center justify-center rounded-r-full text-white' ><IoSearch /></div>
+            <input type='text' className='w-full  h-[1.7rem] pl-2 outline-none ' placeholder='search product here ...'  onChange={handleSearch} value={search}/>
+            <div className='text-lg min-w-[50px] h-[1.7rem] bg-red-500 flex items-center justify-center rounded-r-full text-white' ><IoSearch /></div>
           </div>
           <div className="flex item-center justify-center gap-3 lg:gap-7 ">
             <div className='relative group flex justify-center'>
@@ -104,7 +106,7 @@ const Headr = () => {
             </div>
             {
               user?._id && (
-                <Link to={'/cart'} className=' cursor-pointer relative text-3xl lg:text-3xl '>
+                <Link to={'/cart'} className=' cursor-pointer flex items-center relative text-3xl lg:text-3xl '>
                   <span><HiMiniShoppingCart /></span>
                   <div className='bg-red-500 text-white flex items-center justify-center w-5 h-5 rounded-full p-1 absolute -top-2 -right-3'><p className='text-xs'>{context?.cartproductcount}</p></div>
                 </Link>

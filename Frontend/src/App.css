@@ -13,3 +13,6 @@
 .scrollbar-none::-webkit-scrollbar{
     display: none;
 }
+.header-bg{
+    background-color: rgb(224 217 207);
+}

@@ -14,7 +14,7 @@ import { setUserDetails } from './store/userslice';
 
 function App() {
   const dispatch = useDispatch()
-  const [cartproductcount ,setCartproductcount] = useState(0)
+  const [cartproductcount, setCartproductcount] = useState(0)
 
   const fetchuserdetails = async () => {
     const dataresponse = await fetch(summaryApi.currentUser.url, {
@@ -23,7 +23,7 @@ function App() {
     })
 
     const dataApi = await dataresponse.json();
-    if(dataApi.success) {
+    if (dataApi.success) {
       dispatch(setUserDetails(dataApi.data))
     }
     // console.log("DataUser: " + dataresponse)
@@ -31,28 +31,17 @@ function App() {
   }
 
   const fetchUserAddCart = async () => {
-    try {
-      const dataresponse = await fetch(summaryApi.countAddToCart.url, {
-        method: summaryApi.countAddToCart.method,
-        credentials: "include",
-      });
-  
-      if (!dataresponse.ok) {
-        throw new Error(`HTTP error! status: ${dataresponse.status}`);
-      }
-  
-      const dataApi = await dataresponse.json();
-      console.log("dataApi", dataApi);
-  
-      if (dataApi && dataApi.data && typeof dataApi.data.count !== 'undefined') {
-        setCartproductcount(dataApi.data.count);
-      } else {
-        console.error("dataApi does not have the expected structure:", dataApi);
-        // Handle the case where the data structure is not as expected
-      }
-    } catch (error) {
-      console.error("Error fetching user cart count:", error);
+    const dataresponse = await fetch(summaryApi.countAddToCart.url, {
+      method: summaryApi.countAddToCart.method,
+      credentials: "include",
+    })
+
+    const dataApi = await dataresponse.json();
+    // console.log("dataApi", dataApi)
+    if (dataApi.success) {
+      setCartproductcount(dataApi?.data.count)
     }
+
   }
 
 
