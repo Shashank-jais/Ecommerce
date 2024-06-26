@@ -37,7 +37,7 @@ const RecommendProduct = ({ category, heading }) => {
                 {heading}
             </h2>
 
-            <div className='grid grid-cols-[repeat(auto-fit,minmax(300px,320px))] justify-between md:gap-6 overflow-x-scroll scrollbar-none transition-all'>
+            <div className='grid grid-cols-[repeat(auto-fit,minmax(300px,320px))] justify-start md:gap-9 overflow-x-scroll scrollbar-none transition-all'>
                 {
                     loading ? (
                         loadingList.map((_, index) => (
