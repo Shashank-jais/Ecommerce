@@ -49,6 +49,7 @@ function App() {
     fetchuserdetails();
     fetchUserAddCart();
   }, [])
+  
   return (
     <>
       <Context.Provider value={{
