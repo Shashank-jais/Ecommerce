@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser')
 const app = express();
 app.use(cookieParser())
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: 'https://ecommerce-beta-beige-77.vercel.app',
     credentials: true
 }))
 app.use(express.json());
