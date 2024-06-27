@@ -1,7 +1,7 @@
 import SearchProduct from "../pages/SearchProduct"
 
 // const { default: SignUp } = require("../pages/SignUp");
-const backendDomain = "http://localhost:8080"
+const backendDomain = "https://e-commerce-api-blond.vercel.app/"
 const summaryApi = {
     SignUp: {
         url:`${backendDomain}/api/sign-up`,
