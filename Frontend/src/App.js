@@ -19,7 +19,7 @@ function App() {
   const fetchuserdetails = async () => {
     const dataresponse = await fetch(summaryApi.currentUser.url, {
       method: summaryApi.currentUser.method,
-      credentials: "include",
+      credentials: 'include',
     })
 
     const dataApi = await dataresponse.json();
@@ -33,7 +33,7 @@ function App() {
   const fetchUserAddCart = async () => {
     const dataresponse = await fetch(summaryApi.countAddToCart.url, {
       method: summaryApi.countAddToCart.method,
-      credentials: "include",
+      credentials: 'include',
     })
 
     const dataApi = await dataresponse.json();
