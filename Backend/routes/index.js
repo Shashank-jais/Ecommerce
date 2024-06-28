@@ -25,7 +25,7 @@ const router = express.Router();
 
 router.post("/sign-up",userSignUpController)
 router.post("/sign-in",userSigninController)
-router.get("/user-details",authToken,userDetailsController)
+router.post("/user-details",authToken,userDetailsController)
 router.get("/userLogout",userLogoutController)
 
 //admin panel
