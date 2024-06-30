@@ -11,6 +11,10 @@ const summaryApi = {
         url:`${backendDomain}/api/sign-in`,
         method:"post",
     },
+    UpdatePassword: {
+        url:`${backendDomain}/api/updatepassword`,
+        method:"post",
+    },
     currentUser:{
         url:`${backendDomain}/api/user-details`,
         method:"post",

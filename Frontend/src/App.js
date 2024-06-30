@@ -59,7 +59,7 @@ function App() {
       }}>
         <ToastContainer />
         <Headr />
-        <main className=' min-h-[calc(100vh-125px)] pt-16 '>
+        <main className=' min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-60px)] pt-16 '>
           <Outlet />
         </main>
         <Footer />

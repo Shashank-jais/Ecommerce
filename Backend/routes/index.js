@@ -19,12 +19,14 @@ const updateAddToCartProduct = require('../Controller/user/updateAddToCartProduc
 const deleteAddToCartProduct = require('../Controller/user/deleteAddToCartProduct');
 const SearchProduct = require('../Controller/products/SearchProduct');
 const filterproduct = require('../Controller/products/filterProduct');
+const UpdatePassword = require('../Controller/user/UpdatePassword');
 
 
 const router = express.Router();
 
 router.post("/sign-up",userSignUpController)
 router.post("/sign-in",userSigninController)
+router.post("/updatepassword",UpdatePassword)
 router.post("/user-details",authToken,userDetailsController)
 router.get("/userLogout",userLogoutController)
 
