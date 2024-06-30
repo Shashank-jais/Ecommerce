@@ -3,7 +3,7 @@
 ## Overview
 Luxora is a full-featured E-commerce website built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It includes user authentication, product management, shopping cart functionality, and order tracking.
 
-![Luxora Screenshot]()
+![Luxora Screenshot](https://github.com/Shashank-jais/Ecommerce/blob/main/Screenshot%202024-06-30%20185938.png)
 
 ## Features
 - **User Authentication**: Secure login and registration.
